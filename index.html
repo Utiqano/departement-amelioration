@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audit 5S & Gemba</title>
-
-    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,34 +12,46 @@
     <!-- 🔹 Video Background -->
     <div class="video-background">
         <video autoplay muted loop>
-            <source src="https://videos.pexels.com/video-files/3514521/3514521-hd_1080_1890_30fps.mp4" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture de vidéos.
+            <source src="https://videos.pexels.com/video-files/7794276/7794276-uhd_2560_1440_25fps.mp4" type="video/mp4">
         </video>
     </div>
 
-    <!-- 🔹 Main Menu (Centered) -->
+    <!-- 🔹 Main Menu -->
     <div id="menu" class="center-menu">
         <h1>🔥 Amélioration Contenu 🔥</h1>
         <button class="btn-custom" onclick="showSection('audit5S')">Audit 5S</button>
         <button class="btn-custom" onclick="showSection('auditGemba')">Audit Gemba</button>
         <button class="btn-custom" onclick="showSection('videoSection')">Vidéos</button>
-        <button class="btn-custom" onclick="showSection('contactUs')">Contact Us</button>
+        <button class="btn-custom" onclick="showSection('resultatsMois')">Résultats Mois en Cours</button>
+        <button class="btn-custom" onclick="showSection('contactUs')">Contact</button>
     </div>
 
-    <!-- 🔹 Sections (Initially Hidden) -->
+    <!-- 🔹 Sections -->
     <div id="audit5S" class="section">
         <h2>Audit 5S</h2>
-        <button class="btn-custom animated-btn" onclick="window.open('https://forms.office.com/e/YNkFgkXXhn', '_blank')">Réaliser Audit 5S</button>
+        <button class="btn-custom" onclick="window.open('https://forms.office.com/e/YNkFgkXXhn', '_blank')">Réaliser Audit 5S</button>
+        <div class="sub-section">
+            <h3>Planning 5S</h3>
+            <button class="btn-custom" onclick="afficherPDF('https://wkwgroup-my.sharepoint.com/:b:/r/personal/houssine_trabelsi_wkw-group_com/Documents/Planning%205S%20Mars.pdf?csf=1&web=1&e=xal637')">
+                Afficher PDF
+            </button>
+        </div>
         <iframe src="https://www.youtube.com/embed/ntKqMhbqTII" allowfullscreen></iframe>
-        <button class="btn-custom animated-btn" onclick="retourMenu()">Retour</button>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
     </div>
 
     <div id="auditGemba" class="section">
         <h2>Audit Gemba</h2>
-        <button class="btn-custom animated-btn" onclick="window.open('https://forms.office.com/e/1nWmJsVRNb', '_blank')">Gemba OJT Ligne</button>
-        <button class="btn-custom animated-btn" onclick="window.open('https://forms.office.com/e/0nhbJYckHs', '_blank')">Gemba Mur Qualité</button>
-        <button class="btn-custom animated-btn" onclick="window.open('https://forms.office.com/e/Ps1y5HpJ8u', '_blank')">Gemba Magasin</button>
-        <button class="btn-custom animated-btn" onclick="retourMenu()">Retour</button>
+        <button class="btn-custom" onclick="window.open('https://forms.office.com/e/1nWmJsVRNb', '_blank')">Gemba OJT Ligne</button>
+        <button class="btn-custom" onclick="window.open('https://forms.office.com/e/0nhbJYckHs', '_blank')">Gemba Mur Qualité</button>
+        <button class="btn-custom" onclick="window.open('https://forms.office.com/e/Ps1y5HpJ8u', '_blank')">Gemba Magasin</button>
+        <div class="sub-section">
+            <h3>Planning Gemba</h3>
+            <button class="btn-custom" onclick="afficherPDF('https://wkwgroup-my.sharepoint.com/:b:/r/personal/houssine_trabelsi_wkw-group_com/Documents/Planning%20Gemba%20PDF.pdf?csf=1&web=1&e=xhog4W')">
+                Afficher Planning Gemba PDF
+            </button>
+        </div>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
     </div>
 
     <div id="videoSection" class="section">
@@ -53,21 +61,36 @@
         <iframe src="https://www.youtube.com/embed/pE_ptDrpPDM" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/BweHTgi-L_Y" allowfullscreen></iframe>
         <iframe src="https://www.youtube.com/embed/PlZpe_P7OU8" allowfullscreen></iframe>
-        <button class="btn-custom animated-btn" onclick="retourMenu()">Retour</button>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
+    </div>
+
+    <div id="resultatsMois" class="section">
+        <h2>Résultats Mois en Cours</h2>
+        <button class="btn-custom" onclick="afficherPDF('https://wkwgroup-my.sharepoint.com/:b:/r/personal/houssine_trabelsi_wkw-group_com/Documents/Planning%20Gemba%20Mois%20encour.pdf?csf=1&web=1&e=3UQSev')">
+            Afficher Résultat PDF Gemba
+        </button>
+        <button class="btn-custom" onclick="afficherPDF('https://wkwgroup-my.sharepoint.com/:b:/r/personal/houssine_trabelsi_wkw-group_com/Documents/Planning%205S%20Mars.pdf?csf=1&web=1&e=xal637')">
+            Afficher Résultat PDF 5S
+        </button>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
     </div>
 
     <div id="contactUs" class="section">
-        <h2>Contact Us</h2>
+        <h2>Contact</h2>
         <form id="contactForm">
             <input type="text" id="name" placeholder="Votre nom" required>
             <input type="email" id="email" placeholder="Votre email" required>
             <textarea id="message" placeholder="Votre message" required></textarea>
-            <button class="btn-custom animated-btn" type="submit">Envoyer</button>
+            <button class="btn-custom" type="submit">Envoyer</button>
         </form>
-        <button class="btn-custom animated-btn" onclick="retourMenu()">Retour</button>
+        <button class="btn-custom" onclick="retourMenu()">Retour</button>
     </div>
 
     <script src="script.js"></script>
+  <!-- 🔹 Footer -->
+<div class="footer">
+    Créé par <span>le département Amélioration WKW</span> 🚀
+</div>
 
 </body>
 </html>
