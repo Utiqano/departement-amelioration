@@ -81,6 +81,40 @@ body, html {
     box-shadow: 0 8px 20px rgba(0, 150, 255, 0.5);
 }
 
+/* 🔹 Sortable List */
+#sortable-list {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔹 Sortable List Items */
+#sortable-list li {
+    background: linear-gradient(45deg, #ff7eb3, #ff758c);
+    padding: 12px;
+    margin: 8px 0;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: grab;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#sortable-list li:hover {
+    background: linear-gradient(45deg, #ff6381, #ff486a);
+    transform: scale(1.05);
+}
+
+#sortable-list li:active {
+    cursor: grabbing;
+}
+
 /* 🔹 Footer */
 .footer {
     position: fixed;
@@ -202,4 +236,14 @@ body, html {
     #contactUs {
         width: 90%;
     }
+}
+.result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #00d4ff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
 }
