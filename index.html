@@ -23,6 +23,7 @@
         <button class="btn-custom" onclick="showSection('auditGemba')">Audit Gemba</button>
         <button class="btn-custom" onclick="showSection('videoSection')">Vidéos</button>
         <button class="btn-custom" onclick="showSection('resultatsMois')">Résultats Mois en Cours</button>
+        <button class="btn-custom" onclick="showSection('sortableList')">Pourcentage Mois février</button>
         <button class="btn-custom" onclick="showSection('contactUs')">Contact</button>
     </div>
 
@@ -39,6 +40,26 @@
         <iframe src="https://www.youtube.com/embed/ntKqMhbqTII" allowfullscreen></iframe>
         <button class="btn-custom" onclick="retourMenu()">Retour</button>
     </div>
+
+  <div id="sortableList" class="section">
+    <h2>📌 Liste Drag & Drop</h2>
+    
+    <!-- 🔹 Pourcentage Display (Now Above the List) -->
+    <div id="percentageResult" class="result"></div>
+
+    <ul id="sortable-list">
+        <li draggable="true" onclick="showPercentage('Pourcentage UAP1 Gemba', '82%')">Pourcentage UAP1 Gemba</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage UAP1 Audit 5S', '82%')">Pourcentage UAP1 Audit 5S</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage Logistique', '95%')">Pourcentage Logistique Gemba</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage Usine', '93%')">Pourcentage Logistique Audit 5S</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage Production', '68%')">Pourcentage UAP2 Gemba</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage Qualité', '60%')">Pourcentage UAP2 Audit 5S</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage Maintenance', '75%')">Pourcentage usine Gemba</li>
+        <li draggable="true" onclick="showPercentage('Pourcentage Sécurité', '77%')">Pourcentage usine Audite 5S</li>
+    </ul>
+    <div id="percentageResult" class="result"></div>
+    <button class="btn-custom" onclick="retourMenu()">Retour</button>
+</div>
 
     <div id="auditGemba" class="section">
         <h2>Audit Gemba</h2>
@@ -87,10 +108,58 @@
     </div>
 
     <script src="script.js"></script>
-  <!-- 🔹 Footer -->
-<div class="footer">
-    Créé par <span>le département Amélioration WKW</span> 🚀
-</div>
+
+    <script>
+        // Drag and Drop functionality
+        const list = document.getElementById('sortable-list');
+        let draggedItem = null;
+
+        document.querySelectorAll('#sortable-list li').forEach(item => {
+            item.addEventListener('dragstart', function () {
+                draggedItem = this;
+                setTimeout(() => this.style.display = 'none', 0);
+            });
+
+            item.addEventListener('dragend', function () {
+                setTimeout(() => {
+                    draggedItem.style.display = 'block';
+                    draggedItem = null;
+                }, 0);
+            });
+
+            item.addEventListener('dragover', function (e) {
+                e.preventDefault();
+            });
+
+            item.addEventListener('dragenter', function () {
+                this.style.background = 'rgba(0, 150, 255, 0.5)';
+            });
+
+            item.addEventListener('dragleave', function () {
+                this.style.background = '';
+            });
+
+            item.addEventListener('drop', function () {
+                if (draggedItem !== this) {
+                    let items = Array.from(list.children);
+                    let draggedIndex = items.indexOf(draggedItem);
+                    let targetIndex = items.indexOf(this);
+
+                    if (draggedIndex < targetIndex) {
+                        this.after(draggedItem);
+                    } else {
+                        this.before(draggedItem);
+                    }
+                }
+                this.style.background = '';
+            });
+        });
+    </script>
+
+    <!-- 🔹 Footer -->
+    <div class="footer">
+        Créé par <span>le département Amélioration WKW</span> 🚀
+    </div>
 
 </body>
 </html>
