@@ -3,12 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let menu = document.getElementById("menu");
         let section = document.getElementById(id);
 
-        // Masquer le menu avec une animation
         menu.style.opacity = "0";
         setTimeout(() => {
             menu.style.display = "none";
-
-            // Afficher la section avec animation
             section.style.display = "block";
             setTimeout(() => section.classList.add("active"), 50);
         }, 300);
@@ -19,12 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let activeSection = document.querySelector(".section.active");
 
         if (activeSection) {
-            // Masquer la section avec une animation
             activeSection.classList.remove("active");
             setTimeout(() => {
                 activeSection.style.display = "none";
-
-                // Afficher le menu avec une animation
                 menu.style.display = "block";
                 setTimeout(() => (menu.style.opacity = "1"), 50);
             }, 300);
@@ -54,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         this.reset();
     });
 
-    // Ajout de l'effet d'ondulation sur les boutons
+    // 🔹 Ripple Effect on Buttons
     document.querySelectorAll(".btn-custom").forEach((button) => {
         button.addEventListener("click", function (e) {
             let ripple = document.createElement("span");
@@ -76,4 +70,33 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 600);
         });
     });
+
+    // 🔹 Drag-and-Drop List Functionality
+    const listItems = document.querySelectorAll("#sortable-list li");
+    let draggedItem = null;
+
+    listItems.forEach((item) => {
+        item.addEventListener("dragstart", function () {
+            draggedItem = this;
+            setTimeout(() => this.classList.add("dragging"), 0);
+        });
+
+        item.addEventListener("dragend", function () {
+            this.classList.remove("dragging");
+            draggedItem = null;
+        });
+
+        item.addEventListener("dragover", function (e) {
+            e.preventDefault();
+            const draggingItem = document.querySelector(".dragging");
+            const container = this.parentElement;
+            const siblings = [...container.children].filter((child) => child !== draggingItem);
+            
+            let nextSibling = siblings.find(sibling => e.clientY < sibling.getBoundingClientRect().top + sibling.offsetHeight / 2);
+            container.insertBefore(draggingItem, nextSibling);
+        });
+    });
 });
+function showPercentage(name, value) {
+    document.getElementById("percentageResult").innerHTML = `<h3>${name} : ${value}</h3>`;
+}
