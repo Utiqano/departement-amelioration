@@ -46,6 +46,25 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // Préparer les paramètres du template
+        const templateParams = {
+            name: name,
+            email: email,
+            message: message,
+        };
+
+        // Envoi du message via EmailJS
+        emailjs.send('service_bvzi4ft', 'template_imkem7x', templateParams)
+            .then(response => {
+                console.log('Succès de l\'envoi:', response);
+                alert('Votre message a été envoyé avec succès !');
+            })
+            .catch(error => {
+                console.error('Erreur lors de l\'envoi du message:', error);
+                alert('Désolé, une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.');
+            });
+
+        // Message de succès avec fade-out
         const formMessage = document.getElementById("formMessage");
         formMessage.textContent = "Message envoyé avec succès !";
         formMessage.classList.add("show");
@@ -122,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Afficher un pourcentage avec le nom
 function showPercentage(name, value) {
     document.getElementById("percentageResult").innerHTML = `<h3>${name} : ${value}</h3>`;
 }
